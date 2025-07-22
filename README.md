@@ -1,7 +1,6 @@
 # 🔐 Password Generator - Flagsmith Feature Flag Demo
 
-A simple, secure password generator that demonstrates feature flags in action. Perfect for showcasing Flagsmith capabilities in interviews or demos.
-
+A simple, secure password generator that demonstrates feature flags in action. Perfect for showcasing Flagsmith capabilities
 ## ✨ Features
 
 - **16-character strong passwords** with uppercase, lowercase, numbers, and symbols
@@ -87,7 +86,7 @@ simples3/
 - Modify the `<style>` section to change appearance
 - The design uses a clean, modern aesthetic suitable for demos
 
-## 🎯 Interview Tips
+## 🎯 
 
 ### Demo Script
 1. **Start**: "This is a password generator that demonstrates feature flags"
@@ -120,4 +119,4 @@ This is a demo project for showcasing feature flags. For production use, conside
 
 ---
 
-**Good luck with your Flagsmith interview!** 🚀 
+**To the Moon** 🚀 
