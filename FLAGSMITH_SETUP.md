@@ -33,7 +33,7 @@
 4. Toggle the `copy_function` flag on/off
 5. Refresh the website to see the copy button appear/disappear
 
-## 🎯 Interview Demo Script
+## 🎯 Demo Script
 
 1. **Start**: "This password generator uses real Flagsmith feature flags"
 2. **Show the flag**: Point to the status indicator showing "Enabled"
@@ -63,4 +63,4 @@
 
 ---
 
-**Ready for your interview!** 🚀 
+**Ready!** 🚀 
