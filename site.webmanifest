@@ -1,0 +1,16 @@
+{
+    "name": "Matrix Password Generator",
+    "short_name": "Matrix Passwords",
+    "description": "Generate ultra-secure passwords with our Matrix-themed password generator",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#00ff00",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        }
+    ]
+} 
