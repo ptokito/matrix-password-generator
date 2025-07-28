@@ -11,20 +11,7 @@ NC='\033[0m'
 echo -e "${GREEN}🔄 Updating Password Generator${NC}"
 echo "================================"
 
-# Check if git is available
-if ! command -v git &> /dev/null; then
-    echo -e "${RED}❌ Git is not installed or not in PATH${NC}"
-    exit 1
-fi
 
-# Check if this is a git repository
-if [ ! -d ".git" ]; then
-    echo -e "${YELLOW}⚠️  Not a git repository. Skipping GitHub push.${NC}"
-    GIT_AVAILABLE=false
-else
-    GIT_AVAILABLE=true
-    echo -e "${BLUE}📦 Git repository detected${NC}"
-fi
 
 # Get the S3 bucket name and CloudFront distribution ID
 S3_BUCKET=$(terraform output -raw s3_bucket_name 2>/dev/null)
@@ -65,44 +52,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# GitHub operations
-if [ "$GIT_AVAILABLE" = true ]; then
-    echo -e "${PURPLE}🐙 GitHub Operations${NC}"
-    echo "================================"
-    
-    # Check if there are changes to commit
-    if git diff --quiet; then
-        echo -e "${YELLOW}📝 No changes detected in git${NC}"
-    else
-        echo -e "${YELLOW}📝 Staging changes...${NC}"
-        git add .
-        
-        echo -e "${YELLOW}📝 Committing changes...${NC}"
-        git commit -m "Update Matrix Password Generator - $(date '+%Y-%m-%d %H:%M:%S')"
-        
-        if [ $? -eq 0 ]; then
-            echo -e "${GREEN}✅ Changes committed successfully${NC}"
-            
-            # Check if remote exists
-            if git remote get-url origin &> /dev/null; then
-                echo -e "${YELLOW}🚀 Pushing to GitHub...${NC}"
-                git push origin main 2>/dev/null || git push origin master 2>/dev/null
-                
-                if [ $? -eq 0 ]; then
-                    echo -e "${GREEN}✅ Successfully pushed to GitHub${NC}"
-                else
-                    echo -e "${RED}❌ Failed to push to GitHub${NC}"
-                    echo -e "${YELLOW}💡 Make sure you have the correct permissions and remote is configured${NC}"
-                fi
-            else
-                echo -e "${YELLOW}⚠️  No remote 'origin' found. Skipping push.${NC}"
-                echo -e "${BLUE}💡 To add a remote: git remote add origin <your-repo-url>${NC}"
-            fi
-        else
-            echo -e "${RED}❌ Failed to commit changes${NC}"
-        fi
-    fi
-fi
+
 
 # Get the CloudFront URL
 CLOUDFRONT_URL=$(terraform output -raw cloudfront_url 2>/dev/null)
